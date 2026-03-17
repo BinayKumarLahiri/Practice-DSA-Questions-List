@@ -46,20 +46,71 @@ OUTPUT:
 4 5 6 8 0 0 0 0
 -1 -2 3 0 0
 
+
+TEST CASES:
+15
+8
+4 5 0 1 9 0 5 0
+5
+0 0 0 0 1
+5
+1 0 0 0 0
+3
+0 0 0
+4
+1 2 3 4
+1
+0
+1
+7
+10
+0 1 0 3 12 0 0 5 0 9
+6
+-1 0 -5 0 10 0
+5
+100 200 300 400 500
+7
+0 0 5 0 0 2 1
+2
+0 8
+2
+8 0
+8
+1 0 2 0 3 0 4 0
+12
+0 0 0 1 1 1 0 0 0 2 2 2
+
+
+OUTPUT:
+4 5 1 9 5 0 0 0
+1 0 0 0 0
+1 0 0 0 0
+0 0 0
+1 2 3 4
+0
+7
+1 3 12 5 9 0 0 0 0 0
+-1 -5 10 0 0 0
+100 200 300 400 500
+5 2 1 0 0 0 0
+8 0
+8 0
+1 2 3 4 0 0 0 0
+1 1 1 2 2 2 0 0 0 0 0 0
+
 */
 
 #include <bits/stdc++.h>
 using namespace std;
 void pushZeros(vector<int> &arr) {
-    int i=0,j=1;
-    while(i<arr.size() && j<arr.size()) {
+    int i=0,j=0;
+    while(j<arr.size()) {
         if(arr[i] != 0)i++;
-        else if(arr[j] == 0)j++;
-        else {
-            int temp = arr[i];
-            arr[i] = arr[j];
-            arr[j] = temp;
+        else if(arr[j] != 0)  {
+            arr[i++] = arr[j];
+            arr[j] = 0;
         }
+        j++;
     }
 }
 int main() {
